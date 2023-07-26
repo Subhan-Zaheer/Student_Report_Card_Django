@@ -43,6 +43,9 @@ class Student(models.Model):
 class Subject(models.Model):
     subject_name = models.CharField(max_length=100)
 
+    def __str__(self) -> str:
+        return self.subject_name
+
 
 class SubjectMarks(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE,)
@@ -50,7 +53,7 @@ class SubjectMarks(models.Model):
     marks = models.IntegerField()
 
     def __str__(self):
-        return f'{self.student.student_name} {self.subject_name.subject_name} {self.marks}'
+        return f'{self.student.student_name} {self.subject.subject_name} {self.marks}'
     
 
     class Meta:

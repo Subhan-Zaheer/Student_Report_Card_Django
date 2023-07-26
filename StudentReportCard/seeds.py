@@ -3,11 +3,11 @@ import random
 from .models import *
 fake = Faker()
 
-# def seed_dept():
-#     Department.objects.create(department_name = "Computer Sciences")
-#     Department.objects.create(department_name = "Mechanical Engineering")
-#     Department.objects.create(department_name = "Electrical Engineering")
-#     Department.objects.create(department_name = "Civil Engineering")
+def seed_dept():
+    Department.objects.create(department_name = "Computer Sciences")
+    Department.objects.create(department_name = "Mechanical Engineering")
+    Department.objects.create(department_name = "Electrical Engineering")
+    Department.objects.create(department_name = "Civil Engineering")
 
 def seed_db():
     try:
@@ -32,4 +32,19 @@ def seed_db():
                 student_address = student_address
             )
     except Exception as e :
+        print(e)
+
+def seed_student_marks():
+    try:
+        students = Student.objects.all()
+        subjects = Subject.objects.all()
+        for i in range(students.count()):
+            for subject in subjects:
+
+                subject_marks = SubjectMarks.objects.create(
+                    marks = random.randint(0, 100),
+                    student = students[i], 
+                    subject = subject
+                )
+    except Exception as e:
         print(e)
