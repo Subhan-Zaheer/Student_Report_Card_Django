@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+
+{% block title %} Report Card {% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">Student Report Card</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Student Information</h4>
+                    <p><strong>Name:</strong> {{student.student.student_name}}</p>
+                    <p><strong>Email Address:</strong> {{student.student.student_email}}</p>
+                    <p><strong>Registration Number:</strong> {{student.student.student_id.student_id}}</p>
+                    <p><strong>Age:</strong> {{student.student.student_age}}</p>
+                    <p><strong>Department:</strong> {{student.department.department_name}}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Subjects</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in student.subject.subject_name %}
+                            <tr>
+                                <td>s</td>
+                                <td>student.marks</td>
+                            </tr>
+                            {% endfor %}
+                            <!-- <tr>
+                                <td>Physics</td>
+                                <td>85</td>
+                            </tr>
+                            <tr>
+                                <td>Chemistry</td>
+                                <td>92</td>
+                            </tr> -->
+                            <!-- Add more subjects and marks here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p><strong>Total Marks:</strong> 267</p>
+                <p><strong>Percentage:</strong> 89%</p>
+                <p><strong>Grade:</strong> A</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -25,3 +25,12 @@ def get_students(request):
         'page_list' : [i+1 for i in range(total_pages)]
     }
     return render(request, 'students.html', data)
+
+def detailed_report_card(request, id):
+    student = SubjectMarks.objects.filter(student__student_id__student_id = id)
+    # total_subjects = student.subject.subject_name
+    data = {
+        'student' : student,
+        # 'subjects' : total_subjects
+    }
+    return render(request, 'detailed_report.html', data)

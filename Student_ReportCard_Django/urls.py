@@ -21,4 +21,5 @@ from StudentReportCard.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('students/', get_students, name='get_students'),
+    path('reportdetail/<id>', detailed_report_card, name='detailed_report_card'),
 ]
