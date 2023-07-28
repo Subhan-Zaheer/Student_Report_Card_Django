@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.db.models import *
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def get_students(request):
         search = request.GET.get('search')
         students = Student.objects.filter(
             Q(student_name__icontains = search) |
-            Q(department__department_name__icontains = search) |
+            Q(department__department_name__icontains = search) | 
             Q(student_id__student_id__icontains = search) |
             Q(student_email__icontains = search),
         )
@@ -27,10 +28,20 @@ def get_students(request):
     return render(request, 'students.html', data)
 
 def detailed_report_card(request, id):
-    student = SubjectMarks.objects.filter(student__student_id__student_id = id)
+    studentmarks = SubjectMarks.objects.filter(student__student_id__student_id = id)
+    student = Student.objects.filter(student_id__student_id = id)
+    obtained_marks = int(studentmarks.aggregate(Sum('marks'))['marks__sum']) # It will return a key/value pair. 
+    # That's why we have to subscript the dict to get the actual value.
+
+    percentage = round((obtained_marks/400) * 100, 3) # Rounding off the value of percentage upto 3 decimal places.
+    print(studentmarks.values())
+    print(f"Student values are \n {student.values()}")
     # total_subjects = student.subject.subject_name
     data = {
-        'student' : student,
+        'studentmarks' : studentmarks,
+        'mystudent' : student,
+        'obtainedmarks' : obtained_marks,
+        'percentage' : percentage,
         # 'subjects' : total_subjects
     }
     return render(request, 'detailed_report.html', data)

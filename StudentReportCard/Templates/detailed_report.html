@@ -11,11 +11,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4>Student Information</h4>
-                    <p><strong>Name:</strong> {{student.student.student_name}}</p>
-                    <p><strong>Email Address:</strong> {{student.student.student_email}}</p>
-                    <p><strong>Registration Number:</strong> {{student.student.student_id.student_id}}</p>
-                    <p><strong>Age:</strong> {{student.student.student_age}}</p>
-                    <p><strong>Department:</strong> {{student.department.department_name}}</p>
+                    <p><strong>Name:</strong></p> <p> {{mystudent.student_name | safe}}</p>
+                    <p><strong>Email Address:</strong></p> <p> {{mystudent.student_email}}</p>
+                    <p><strong>Registration Number:</strong></p> <p> {{mystudent.student_id.student_id}}</p>
+                    <p><strong>Age:</strong></p> <p> {{mystudent.student_age}}</p>
+                    <p><strong>Department:</strong></p> <p> {{mystudent.department.department_name}}</p>
                 </div>
                 <div class="col-md-6">
                     <h4>Subjects</h4>
@@ -27,10 +27,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for s in student.subject.subject_name %}
+                            {% for s in studentmarks %}
                             <tr>
-                                <td>s</td>
-                                <td>student.marks</td>
+                                <td>{{s.subject.subject_name}}</td>
+                                <td>{{s.marks}}</td>
                             </tr>
                             {% endfor %}
                             <!-- <tr>
@@ -48,8 +48,8 @@
             </div>
             <hr>
             <div class="text-center">
-                <p><strong>Total Marks:</strong> 267</p>
-                <p><strong>Percentage:</strong> 89%</p>
+                <p><strong>Total Marks:</strong> {{obtainedmarks}}</p>
+                <p><strong>Percentage:</strong> {{percentage}}</p>
                 <p><strong>Grade:</strong> A</p>
             </div>
         </div>
