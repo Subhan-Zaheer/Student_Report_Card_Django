@@ -34,14 +34,11 @@ def detailed_report_card(request, id):
     # That's why we have to subscript the dict to get the actual value.
 
     percentage = round((obtained_marks/400) * 100, 3) # Rounding off the value of percentage upto 3 decimal places.
-    print(studentmarks.values())
-    print(f"Student values are \n {student.values()}")
-    # total_subjects = student.subject.subject_name
+
     data = {
         'studentmarks' : studentmarks,
         'mystudent' : student,
         'obtainedmarks' : obtained_marks,
         'percentage' : percentage,
-        # 'subjects' : total_subjects
     }
     return render(request, 'detailed_report.html', data)
