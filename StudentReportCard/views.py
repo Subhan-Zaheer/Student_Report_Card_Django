@@ -57,11 +57,20 @@ def detailed_report_card(request, id):
 
     percentage = round((obtained_marks/400) * 100, 3) # Rounding off the value of percentage upto 3 decimal places.
     grade = calculating_grades(percentage)
+    rank = Student_Rank.objects.filter(student__student_id__student_id = id)
+    student_rank = 0
+    date_of_generation = None
+    for _ in rank:
+        student_rank = _.student_rank
+        date_of_generation = _.date_of_generating_report
+    print(rank.values())
     data = {
         'studentmarks' : studentmarks,
         'mystudent' : student,
         'obtainedmarks' : obtained_marks,
         'percentage' : percentage,
         'grade' : grade,
+        'rank' : student_rank,
+        'date_of_generation' : date_of_generation,
     }
     return render(request, 'detailed_report.html', data)
