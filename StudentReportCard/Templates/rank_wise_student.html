@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{%block title%} Rank Wise Students {% endblock %}
+
+{%block body%}
+
+<div class="container mt-5 shadow-lg">
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Registration</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in students%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="/reportdetail/{{s.student.student_id.student_id}}" >{{s.student.student_id.student_id}} </a></td>
+            <td>{{s.student.student_name}}</td>
+            <td>{{s.student.department.department_name}}</td>
+            <td>{{s.student.student_email}}</td>
+            <td>{{s.student.student_address}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

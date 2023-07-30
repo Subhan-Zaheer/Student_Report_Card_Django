@@ -8,13 +8,20 @@
     <div>
         <h2 class="modal-title text-center">Students</h2>
     </div>
-    <form >        
-        <div class="col-md-6 mt-5 shadow-lg justify-content-center">
-            <label for="name" class="form-label">Search Student</label>
-            <input type="text" class="form-control" id="image" name="search" placeholder="Search here" ><br>
-            <button type="submit" class="btn btn-outline-primary">Search</button>
-        </div>
-    </form>
+    <div>
+      <span><form>        
+          <div class="col-md-4 mt-4 shadow-lg justify-content-center">
+              <label for="name" class="form-label">Search Student</label>
+              <input type="text" class="form-control" id="image" name="search" placeholder="Search here" ><br>
+              <button type="submit" class="btn btn-outline-primary">Search</button>
+          </div>
+      </form></span>
+      <span>
+        <form action="{% url 'rank wise students' %}">
+          <button type="submit" class="btn btn-outline-secondary">Rank Wise Students</button>
+        </form>
+      </span>
+    </div>
 </div>
 
 <div class="container mt-5 shadow-lg">

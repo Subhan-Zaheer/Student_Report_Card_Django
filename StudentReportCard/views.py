@@ -63,7 +63,6 @@ def detailed_report_card(request, id):
     for _ in rank:
         student_rank = _.student_rank
         date_of_generation = _.date_of_generating_report
-    print(rank.values())
     data = {
         'studentmarks' : studentmarks,
         'mystudent' : student,
@@ -74,3 +73,9 @@ def detailed_report_card(request, id):
         'date_of_generation' : date_of_generation,
     }
     return render(request, 'detailed_report.html', data)
+
+def rank_wise_students(request):
+    if request.method == 'GET':
+        students = Student_Rank.objects.all().order_by('student_rank')
+        return render(request, 'rank_wise_student.html', {'students' : students})
+        
