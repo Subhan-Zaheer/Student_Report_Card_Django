@@ -8,10 +8,7 @@ from django.db.models import *
 
 def get_students(request):
     students = Student.objects.all()
-    ranks = Subject.objects.annotate(marks = Sum('subject_marks__marks')).order_by(['-marks', 'student_age'])
     
-    for rank in ranks:
-        print(rank, rank.marks)
 
     if request.GET.get('search'):
         search = request.GET.get('search')

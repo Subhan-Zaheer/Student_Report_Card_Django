@@ -1,6 +1,7 @@
 from faker import Faker
 import random
 from .models import *
+from django.db.models import Sum
 fake = Faker()
 
 def seed_dept():
@@ -40,6 +41,18 @@ def seed_db():
                 )
     except Exception as e :
         print(e)
+
+def seed_ranks_of_student():
+    ranks = Student.objects.annotate(marks = Sum('student_marks__marks')).order_by('-marks', 'student_age')
+    i = 1
+    for rank in ranks:
+        Student_Rank.objects.create(
+            student = rank,
+            student_rank = i   
+        )
+        i += 1
+    pass
+
 
 # def seed_student_marks():
 #     try:
