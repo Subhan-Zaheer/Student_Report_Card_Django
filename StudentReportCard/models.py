@@ -48,7 +48,7 @@ class Subject(models.Model):
 
 
 class SubjectMarks(models.Model):
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE,)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subject_marks')
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='student_marks')
     marks = models.IntegerField()
 
@@ -60,3 +60,12 @@ class SubjectMarks(models.Model):
         # For example if we have a student x and his marks in computer is a. Then there should not be another
         # record for x and subject computer. 'Student' 'Subject' combo must be remain unique.
         unique_together = ['subject', 'student']
+
+class Student_Rank(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='student_rank')
+    student_rank = models.IntegerField()
+    date_of_generating_report = models.DateField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['student_rank', 'date_of_generating_report']
+    
