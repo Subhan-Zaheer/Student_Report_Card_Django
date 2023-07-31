@@ -20,7 +20,8 @@ class my_studentid(admin.ModelAdmin):
 admin.site.register(StudentId, my_studentid)
 
 class my_student(admin.ModelAdmin):
-    list_display = ('student_id', 'department', 'student_name', 'student_email', 'student_age', 'student_address')
+    list_display = ('student_id', 'department', 'student_name', 'student_email', 'is_deleted', 'student_age', 
+                    'student_address')
 
 admin.site.register(Student, my_student)
 
