@@ -3,11 +3,20 @@ from .models import *
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import *
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
 def get_students(request):
     students = Student.objects.all()
+    send_mail(
+        'Test mail from Student report card.',
+        'This is a test mail.',
+        settings.EMAIL_HOST_USER, 
+        ['2020cs666@student.uet.edu.pk'],
+        fail_silently=False        
+    )
     
 
     if request.GET.get('search'):

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from StudentReportCard.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,6 @@ urlpatterns = [
     path('reportdetail/<id>', detailed_report_card, name='detailed_report_card'),
     path('rank-wise-students/', rank_wise_students, name='rank wise students'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
