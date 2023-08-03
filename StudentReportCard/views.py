@@ -45,21 +45,20 @@ def get_students(request):
 def calculating_grades(percentage):
     if percentage >=95:
         return "A+"
-    elif percentage >= 85 and percentage < 95:
+    elif percentage >= 85:
         return "A"
-    elif percentage >= 75 and percentage < 85:
+    elif percentage >= 75:
         return "B+"
-    elif percentage >= 65 and percentage < 75:
+    elif percentage >= 65:
         return "B"
-    elif percentage >= 55 and percentage < 65:
+    elif percentage >= 55:
         return "C+"
-    elif percentage >= 45 and percentage < 55:
+    elif percentage >= 45:
         return "C"
-    elif percentage >= 33 and percentage < 45:
+    elif percentage >= 33:
         return "D"
     else:
         return "F"
-    pass
 
 def detailed_report_card(request, id):
     studentmarks = SubjectMarks.objects.filter(student__student_id__student_id = id)
