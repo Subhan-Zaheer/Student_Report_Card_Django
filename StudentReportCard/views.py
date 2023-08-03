@@ -9,16 +9,16 @@ from .utils import send_simple_mail, send_mail_with_Attachment
 def get_students(request):
     students = Student.objects.all()
     # send_mail_with_Attachment()
-    first_name = 'Subhan'
-    last_name = 'Zaheer'
-    user_name = 'subhan2003'
-    password = 'subhan'
-    my_user.objects.create(
-        first_name = first_name, 
-        last_name = last_name,
-        user_name = user_name, 
-        password = password
-    )
+    # first_name = 'Subhan'
+    # last_name = 'Zaheer'
+    # user_name = 'subhan2003'
+    # password = 'subhan'
+    # my_user.objects.create(
+    #     first_name = first_name, 
+    #     last_name = last_name,
+    #     user_name = user_name, 
+    #     password = password
+    # )
     
     
 
