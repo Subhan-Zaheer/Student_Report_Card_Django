@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -12,6 +14,12 @@ class my_user(models.Model):
     last_name = models.CharField(max_length=50, null=True, blank=True)
     user_name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
+
+@receiver(post_save, sender=my_user)
+def my_user_signal(sender, instance, **kwargs):
+    print(f"My user object created.")
+    print()
+    print(sender, instance, kwargs)
 
 class Department(models.Model):
     department_name = models.CharField(max_length=100)
