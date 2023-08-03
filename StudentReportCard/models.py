@@ -12,7 +12,7 @@ class Student_manager(models.Manager):
 class my_user(models.Model):
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    user_name = models.CharField(max_length=50)
+    user_name = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=50)
 
 @receiver(post_save, sender=my_user)
