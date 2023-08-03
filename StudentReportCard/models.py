@@ -17,7 +17,7 @@ class my_user(models.Model):
 
 @receiver(post_save, sender=my_user)
 def my_user_signal(sender, instance, **kwargs):
-    print(f"My user object created.")
+    print("My user object created.")
     print()
     print(sender, instance, kwargs)
 
