@@ -36,7 +36,7 @@ def get_students(request):
     final_students_data = p.get_page(page_number)
     total_pages = p.num_pages
     data = {
-        'final_data' : final_students_data,
+        'final_data' : students,
         'last_page' : total_pages, 
         'page_list' : [i+1 for i in range(total_pages)]
     }
